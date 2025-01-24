@@ -1,4 +1,4 @@
-/* Body styling for alignment */
+/* Basic Styling */
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #fff;
@@ -9,65 +9,65 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 20px;
+    margin-top: 30px;
+    width: 80%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 /* Container for both video player and playlist */
 .container {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
     max-width: 1200px;
     margin-top: 20px;
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    gap: 20px; /* Space between elements */
 }
 
 /* Video player styling */
 .video-container {
-    flex: 3;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-    /* Align left */
+    align-items: center;
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-/* Description section styling */
-.description {
-    margin-top: 20px;
-    padding: 15px;
-    text-align: left;
-    display: none;
-    /* Removed the background color and border to make it transparent */
-    width: 80%;
-    max-width: 1000px;
-    margin-left: 0;
-    font-size: 68px;
-    /* Adjust the size here */
-    line-height: 1.5;
-    /* Optional: Improve readability */
-    /* Align with the video */
-}
-
-/* Video iframe */
 iframe {
     width: 100%;
-    height: 450px;
+    height: 0;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
     border: 2px solid #222;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* Playlist */
+/* Playlist Styling */
 ul {
     list-style: none;
     padding: 0;
-    width: 25%;
     margin: 0;
+    flex: 1 1 35%;
+    max-width: 300px;
     height: 450px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 10px;
 }
 
 li {
@@ -85,17 +85,22 @@ li {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-li span {
-    flex: 1;
-    text-align: left;
-    margin-right: 10px;
+li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
 }
 
-li .play-button {
-    margin-left: 10px;
-    background: #222;
+li.active {
+    background-color: #b3d9ff;
+    border-color: #66b3ff;
+}
+
+/* Play button style */
+.play-button {
+    margin-right: auto;
+    background: #7173eb;
     color: white;
-    border: 2px solid #444;
+    border: 2px solid #ffffff;
     padding: 3px 8px;
     border-radius: 5px;
     cursor: pointer;
@@ -103,6 +108,102 @@ li .play-button {
     transition: background 0.3s;
 }
 
-li .play-button:hover {
-    background: #555;
+.play-button:hover {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: none;
+}
+
+/* Description Section */
+.description {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: none;
+    width: 80%;
+    max-width: 1000px;
+    text-align: left;
+    display: none;
+}
+
+/* Mobile Devices Styling */
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Adjust video container */
+    .video-container {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+
+    iframe {
+        height: 250px;
+        padding-top: 56.25%; /* Keep aspect ratio intact */
+    }
+
+    /* Adjust playlist styling */
+    ul {
+        flex: 1 1 100%;
+        height: auto;
+        margin-top: 20px;
+        overflow-y: visible;
+    }
+
+    /* Adjust description */
+    .description {
+        width: 90%;
+    }
+}
+
+/* Portrait Mode Adjustments */
+@media (orientation: portrait) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .video-container iframe {
+        height: 250px;
+        padding-top: 56.25%; /* Maintain aspect ratio */
+    }
+
+    ul {
+        margin-top: 20px;
+        height: auto;
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (orientation: landscape) {
+    .container {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .video-container iframe {
+        height: 450px;
+        padding-top: 56.25%; /* Maintain aspect ratio */
+    }
+
+    ul {
+        margin-top: 20px;
+        height: 450px;
+        overflow-y: auto;
+    }
 }
