@@ -1,8 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PABLO</title>
     <style>
+        /* Basic styling */
         body {
             font-family: 'Courier New', Courier, monospace;
             background-color: #fff;
@@ -11,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             flex-direction: column;
         }
 
@@ -19,11 +23,14 @@
             font-size: 20px;
             margin-top: 30px;
             width: 80%;
+            /* Make the header the same width as the video and descriptions */
             max-width: 1200px;
             margin-bottom: 20px;
             text-align: left;
+            /* Align the header to the left */
         }
 
+        /* Container for both video player and playlist */
         .container {
             display: flex;
             justify-content: space-between;
@@ -32,25 +39,24 @@
             margin-top: 20px;
         }
 
+        /* Video player styling */
         .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 0;
-            padding-bottom: 56.25%;
+            flex: 3;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: 450px;
             border: 2px solid #222;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Playlist */
         ul {
             list-style: none;
             padding: 0;
@@ -88,6 +94,7 @@
             border-color: #66b3ff;
         }
 
+        /* Play button style */
         .play-button {
             margin-right: auto;
             background: #7173eb;
@@ -106,23 +113,39 @@
             background: none;
         }
 
+        /* Description section */
         .description {
             margin-top: 20px;
             padding: 15px;
             background-color: #ffffff;
             border: 2px solid #ffffff;
+            border-radius: none;
             width: 80%;
             max-width: 1000px;
             text-align: left;
+            /* Align the description text to the left */
             display: none;
         }
 
+        /* Media Queries for small screens */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 align-items: center;
+                width: 90%;
             }
 
+            /* Video player scaling */
+            .video-container {
+                max-width: 100%;
+                padding-bottom: 56.25%; /* Maintain aspect ratio */
+            }
+
+            iframe {
+                height: 300px; /* Adjust height for smaller screens */
+            }
+
+            /* Playlist */
             ul {
                 width: 100%;
                 height: auto;
@@ -132,16 +155,137 @@
                 width: 100%;
                 font-size: 14px;
             }
+
+            .play-button {
+                font-size: 10px; /* Adjust play button font size */
+            }
         }
 
+        /* Media Queries for Landscape Orientation */
         @media (orientation: landscape) {
             .container {
-                flex-direction: row;
+                flex-direction: row; /* Keep video and playlist side by side */
             }
 
+            /* Playlist style for landscape */
             ul {
-                width: 30%;
+                width: 30%; /* Reduce the width of the playlist */
+            }
+
+            .video-container {
+                width: 65%; /* Give more space to the video player */
             }
         }
     </style>
 </head>
+
+<body>
+    <h1>Hier ist eine kleine Auswahl meiner Arbeiten, Video- und Musikproduktionen.</h1>
+
+    <div class="container">
+        <div class="video-container">
+            <!-- Embed YouTube Player -->
+            <iframe id="googleDrivePlayer" frameborder="0" allow="fullscreen" webkitallowfullscreen mozallowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Playlist -->
+        <ul id="playlist">
+            <!-- Video 1 -->
+            <li data-src="https://www.youtube.com/embed/3dtHRmb8tt0"
+                data-description="Es ist schwierig, einen Film in 36 Stunden zu drehen, aber wir haben die Herausforderung angenommen und den zweiten Preis gewonnen.">
+                <span>Koenig der welt</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 2 -->
+            <li data-src="https://www.youtube.com/embed/-Vu7Y9NGcQ8"
+                data-description="Ich wurde von Unido angeheuert, um über ein Entwicklungshilfeprogramm in Tunesien zu berichten. Die Schwierigkeit bestand in der Hitze und darin, sich mit der Ausrüstung fortzubewegen.">
+                <span>Fig of Djebba</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 3 -->
+            <li data-src="https://www.youtube.com/embed/bRAlk86Pt1c"
+                data-description="Ein Stück unter der Regie von Ingrid Lang am Hamakom-Theater.">
+                <span>Der letzte Mensch</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 4 -->
+            <li data-src="https://www.youtube.com/embed/SfapM9Gcda0"
+                data-description="Ein von Pasolini geschriebenes Stück, inszeniert von Ingrid Lang am Theater Hamakom.">
+                <span>Orgie</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 5 -->
+            <li data-src="https://www.youtube.com/embed/T4Y-Am4cw0E"
+                data-description="Ein Text und Lieder für das Theatre Hamakom, noch einmal. Ich habe das Glück, die von diesem Theater produzierten Stücke immer filmen zu dürfen.">
+                <span>100 songs</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 6 -->
+            <li data-src="https://www.youtube.com/embed/mYDfAiUcTms"
+                data-description="Was ich am Theater liebe, ist die Kraft der Stimme und die Präsenz der Schauspieler, jeder Abend ist ein erstes Mal.">
+                <span>Das Kasperlspiel vom Meister Siebentot</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 7 -->
+            <li data-src="https://www.youtube.com/embed/SwRvnIG-3pk"
+                data-description="Ich wurde vom Volkstheater engagiert, um jeden Abend ein Stück zu filmen, wobei das Bild live projiziert wurde. Ich werde nie den Abend der Premiere vergessen, wenn man darauf wartet, dass sich der Vorhang öffnet und man die Menge flüstern hört. Dann wird einem klar, dass die zweimonatige Probe an einem einzigen Abend stattfinden wird. ">
+                <span>Klein Zaches</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 8 -->
+            <li data-src="https://www.youtube.com/embed/d2uPPKzhdT8"
+                data-description="Mein Musikprojekt mit Iris Winter, ich komponiere die Musik und mache den Mix. Das Video wurde auf Mallorca mit einer Drohne gefilmt.">
+                <span>Eurodance by Eyerizz</span>
+                <button class="play-button">Play</button>
+            </li>
+            <!-- Video 9 -->
+            <li data-src="https://www.youtube.com/embed/-Js6mxMD7Uw"
+                data-description="Ich hoffe, dass ich eines Tages auf die Bühne gehen kann, um die Tracks live zu spielen. Wir proben einmal die Woche, vielleicht schaffen wir es eines Tages. ">
+                <span>Cassiopea by Eyerizz</span>
+                <button class="play-button">Play</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Description Section -->
+    <div class="description" id="descriptionSection">
+        <p id="videoDescription">Video Description Here</p>
+    </div>
+
+    <script>
+        const googleDrivePlayer = document.getElementById('googleDrivePlayer');
+        const playlist = document.getElementById('playlist');
+        const descriptionSection = document.getElementById('descriptionSection');
+        const videoDescription = document.getElementById('videoDescription');
+
+        // Set default video source on page load
+        window.onload = () => {
+            googleDrivePlayer.src = "https://www.youtube.com/embed/3dtHRmb8tt0"; // Set default video (first one in the list)
+        };
+
+        // Click event listener for both list items and play buttons
+        playlist.addEventListener('click', (e) => {
+            // Check if the play button was clicked
+            if (e.target.classList.contains('play-button')) {
+                const videoSrc = e.target.closest('li').getAttribute('data-src');
+                const descriptionText = e.target.closest('li').getAttribute('data-description');
+
+                // Highlight the selected video in playlist
+                const allItems = playlist.querySelectorAll('li');
+                allItems.forEach(item => item.classList.remove('active'));
+                e.target.closest('li').classList.add('active');
+
+                // Change the iframe source to play the selected video
+                googleDrivePlayer.src = videoSrc;
+
+                // Show the description section and update its content
+                descriptionSection.style.display = 'block';
+                videoDescription.textContent = descriptionText;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
