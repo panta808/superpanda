@@ -1,4 +1,4 @@
-/* Body styling for alignment */
+/* Basic styling */
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #fff;
@@ -7,9 +7,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
-    text-align: center;
+}
+
+h1 {
+    font-size: 20px;
+    margin-top: 30px;
+    width: 80%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 /* Container for both video player and playlist */
@@ -23,35 +31,19 @@ body {
 
 /* Video player styling */
 .video-container {
-    flex: 3;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-    /* Align left */
-}
-
-/* Description section styling */
-.description {
-    margin-top: 20px;
-    padding: 15px;
-    text-align: left;
-    display: none;
-    /* Removed the background color and border to make it transparent */
-    width: 80%;
-    max-width: 1000px;
-    margin-left: 0;
-    font-size: 68px;
-    /* Adjust the size here */
-    line-height: 1.5;
-    /* Optional: Improve readability */
-    /* Align with the video */
-}
-
-/* Video iframe */
-iframe {
+    position: relative;
     width: 100%;
-    height: 450px;
+    max-width: 800px;
+    height: 0;
+    padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border: 2px solid #222;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -85,17 +77,22 @@ li {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-li span {
-    flex: 1;
-    text-align: left;
-    margin-right: 10px;
+li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
 }
 
-li .play-button {
-    margin-left: 10px;
-    background: #222;
+li.active {
+    background-color: #b3d9ff;
+    border-color: #66b3ff;
+}
+
+/* Play button style */
+.play-button {
+    margin-right: auto;
+    background: #7173eb;
     color: white;
-    border: 2px solid #444;
+    border: 2px solid #ffffff;
     padding: 3px 8px;
     border-radius: 5px;
     cursor: pointer;
@@ -103,6 +100,49 @@ li .play-button {
     transition: background 0.3s;
 }
 
-li .play-button:hover {
-    background: #555;
+.play-button:hover {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: none;
+}
+
+/* Description section */
+.description {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    width: 80%;
+    max-width: 1000px;
+    text-align: left;
+    display: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul {
+        width: 100%;
+        height: auto; /* Allow height to adapt */
+    }
+
+    li {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+/* Adjustments for landscape mode */
+@media (orientation: landscape) {
+    .container {
+        flex-direction: row;
+    }
+
+    ul {
+        width: 30%;
+    }
 }
