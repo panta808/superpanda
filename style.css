@@ -1,4 +1,4 @@
-/* Basic styling */
+/* Body styling for alignment */
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #fff;
@@ -7,17 +7,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     flex-direction: column;
-}
-
-h1 {
-    font-size: 20px;
-    margin-top: 30px;
-    width: 80%;
-    max-width: 1200px;
-    margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
 }
 
 /* Container for both video player and playlist */
@@ -27,23 +19,35 @@ h1 {
     width: 80%;
     max-width: 1200px;
     margin-top: 20px;
+    flex-wrap: wrap; /* Allows for wrapping on smaller screens */
 }
 
 /* Video player styling */
 .video-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: 0;
-    padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+/* Description section styling */
+.description {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: left;
+    display: none;
+    width: 80%;
+    max-width: 1000px;
+    margin-left: 0;
+    font-size: 68px;
+    line-height: 1.5;
+}
+
+/* Video iframe */
 iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
+    height: 450px;
     border: 2px solid #222;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -77,22 +81,17 @@ li {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-li:hover {
-    background-color: #f0f0f0;
-    transform: scale(1.05);
+li span {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
 }
 
-li.active {
-    background-color: #b3d9ff;
-    border-color: #66b3ff;
-}
-
-/* Play button style */
-.play-button {
-    margin-right: auto;
-    background: #7173eb;
+li .play-button {
+    margin-left: 10px;
+    background: #222;
     color: white;
-    border: 2px solid #ffffff;
+    border: 2px solid #444;
     padding: 3px 8px;
     border-radius: 5px;
     cursor: pointer;
@@ -100,49 +99,60 @@ li.active {
     transition: background 0.3s;
 }
 
-.play-button:hover {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    background: none;
+li .play-button:hover {
+    background: #555;
 }
 
-/* Description section */
-.description {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #ffffff;
-    border: 2px solid #ffffff;
-    width: 80%;
-    max-width: 1000px;
-    text-align: left;
-    display: none;
-}
-
-/* Responsive design for smaller screens */
+/* Media Queries for responsiveness */
 @media (max-width: 768px) {
+    /* Adjust the container layout for tablets */
     .container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stack video player and playlist vertically */
+        width: 90%; /* Adjust width for better mobile display */
+    }
+
+    /* Video player and playlist width adjustment */
+    .video-container {
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     ul {
-        width: 100%;
-        height: auto; /* Allow height to adapt */
+        width: 100%; /* Make playlist take full width */
+        height: auto; /* Allow playlist height to be dynamic */
+    }
+
+    iframe {
+        height: 350px; /* Reduce iframe height for mobile */
     }
 
     li {
-        width: 100%;
-        font-size: 14px;
+        font-size: 14px; /* Adjust font size for smaller screens */
     }
 }
 
-/* Adjustments for landscape mode */
-@media (orientation: landscape) {
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens (phones in portrait mode) */
     .container {
-        flex-direction: row;
+        width: 100%;
     }
 
-    ul {
-        width: 30%;
+    .description {
+        font-size: 36px; /* Make description smaller on mobile */
+        line-height: 1.3;
+    }
+
+    iframe {
+        height: 250px; /* Further reduce iframe height */
+    }
+
+    li {
+        font-size: 12px; /* Adjust font size for phone */
+        padding: 8px; /* Reduce padding */
+    }
+
+    li .play-button {
+        padding: 2px 6px; /* Smaller play button */
+        font-size: 10px; /* Adjust font size of play button */
     }
 }
