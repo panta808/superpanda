@@ -17,34 +17,34 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            overflow: hidden;
         }
 
         h1 {
             font-size: 20px;
             margin-top: 30px;
             width: 80%;
-            /* Make the header the same width as the video and descriptions */
             max-width: 1200px;
             margin-bottom: 20px;
             text-align: left;
-            /* Align the header to the left */
         }
 
         /* Container for both video player and playlist */
         .container {
             display: flex;
             justify-content: space-between;
-            width: 80%;
+            width: 100%;
             max-width: 1200px;
             margin-top: 20px;
+            flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+            gap: 20px; /* Space between elements */
         }
 
         /* Video player styling */
         .video-container {
-            flex: 3;
+            flex: 1 1 60%; /* Video player takes 60% width on larger screens */
             display: flex;
             justify-content: center;
-            flex-direction: column;
             align-items: center;
         }
 
@@ -60,13 +60,13 @@
         ul {
             list-style: none;
             padding: 0;
-            width: 25%;
             margin: 0;
+            flex: 1 1 35%; /* Playlist takes up to 35% of the container width */
             height: 450px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            gap: 10px;
         }
 
         li {
@@ -123,37 +123,46 @@
             width: 80%;
             max-width: 1000px;
             text-align: left;
-            /* Align the description text to the left */
             display: none;
         }
 
         /* Media Query for Mobile Devices */
         @media (max-width: 768px) {
-            /* Adjust container for smaller screens */
-            .container {
-                flex-direction: column;
-                width: 90%;
-            }
-
-            /* Adjust playlist width */
-            ul {
-                width: 100%;
+            body {
                 height: auto;
-                overflow-y: visible;
-                margin-top: 20px;
+                padding: 20px;
             }
 
-            /* Reduce iframe height for smaller screens */
-            iframe {
-                height: 250px;
-            }
-
-            /* Make the header font size smaller for mobile */
             h1 {
                 font-size: 16px;
             }
 
-            /* Adjust the description section */
+            /* Adjust container for smaller screens */
+            .container {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            /* Adjust the video player container width and height */
+            .video-container {
+                flex: 1 1 100%;
+                height: auto;
+            }
+
+            iframe {
+                height: 250px;
+            }
+
+            /* Adjust playlist styling */
+            ul {
+                flex: 1 1 100%;
+                height: auto;
+                margin-top: 20px;
+                overflow-y: visible;
+            }
+
+            /* Adjust the description width */
             .description {
                 width: 90%;
             }
@@ -267,6 +276,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>
