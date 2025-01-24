@@ -17,65 +17,56 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            overflow: hidden;
         }
 
         h1 {
             font-size: 20px;
             margin-top: 30px;
             width: 80%;
+            /* Make the header the same width as the video and descriptions */
             max-width: 1200px;
             margin-bottom: 20px;
             text-align: left;
+            /* Align the header to the left */
         }
 
         /* Container for both video player and playlist */
         .container {
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            width: 100%;
+            justify-content: space-between;
+            width: 80%;
             max-width: 1200px;
             margin-top: 20px;
-            flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
-            gap: 20px; /* Space between elements */
         }
 
         /* Video player styling */
         .video-container {
+            flex: 3;
             display: flex;
             justify-content: center;
+            flex-direction: column;
             align-items: center;
-            flex: 1 1 100%;
-            max-width: 100%;
-            margin-bottom: 20px;
-            position: relative;
         }
 
         iframe {
             width: 100%;
-            height: 0;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            height: 450px;
             border: 2px solid #222;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: 0;
-            left: 0;
         }
 
         /* Playlist */
         ul {
             list-style: none;
             padding: 0;
+            width: 25%;
             margin: 0;
-            flex: 1 1 35%;
-            max-width: 300px;
             height: 450px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            align-items: flex-start;
         }
 
         li {
@@ -132,90 +123,8 @@
             width: 80%;
             max-width: 1000px;
             text-align: left;
+            /* Align the description text to the left */
             display: none;
-        }
-
-        /* Media Query for Mobile Devices */
-        @media (max-width: 768px) {
-            body {
-                height: auto;
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 16px;
-            }
-
-            /* Adjust container for smaller screens */
-            .container {
-                flex-direction: column;
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            /* Adjust the video player container width and height */
-            .video-container {
-                flex: 1 1 100%;
-                height: auto;
-                margin-bottom: 20px;
-            }
-
-            iframe {
-                height: 250px;
-                padding-top: 56.25%; /* Keep aspect ratio intact */
-            }
-
-            /* Adjust playlist styling */
-            ul {
-                flex: 1 1 100%;
-                height: auto;
-                margin-top: 20px;
-                overflow-y: visible;
-            }
-
-            /* Adjust the description width */
-            .description {
-                width: 90%;
-            }
-        }
-
-        /* Portrait mode adjustments for mobile */
-        @media (orientation: portrait) {
-            .container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .video-container iframe {
-                height: 250px;
-                padding-top: 56.25%; /* Maintain aspect ratio */
-            }
-
-            ul {
-                margin-top: 20px;
-                height: auto;
-                max-width: 100%;
-                flex: 1 1 100%;
-            }
-        }
-
-        /* Landscape mode adjustments for mobile */
-        @media (orientation: landscape) {
-            .container {
-                flex-direction: row;
-                gap: 20px;
-            }
-
-            .video-container iframe {
-                height: 450px;
-                padding-top: 56.25%; /* Maintain aspect ratio */
-            }
-
-            ul {
-                margin-top: 20px;
-                height: 450px;
-                overflow-y: auto;
-            }
         }
     </style>
 </head>
@@ -326,6 +235,8 @@
             }
         });
     </script>
+
+
 
 </body>
 
