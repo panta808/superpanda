@@ -1,0 +1,108 @@
+/* Body styling for alignment */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Container for both video player and playlist */
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+/* Video player styling */
+.video-container {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align left */
+}
+
+/* Description section styling */
+.description {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: left;
+    display: none;
+    /* Removed the background color and border to make it transparent */
+    width: 80%;
+    max-width: 1000px;
+    margin-left: 0;
+    font-size: 68px;
+    /* Adjust the size here */
+    line-height: 1.5;
+    /* Optional: Improve readability */
+    /* Align with the video */
+}
+
+/* Video iframe */
+iframe {
+    width: 100%;
+    height: 450px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Playlist */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 25%;
+    margin: 0;
+    height: 450px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+li {
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+li span {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+}
+
+li .play-button {
+    margin-left: 10px;
+    background: #222;
+    color: white;
+    border: 2px solid #444;
+    padding: 3px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+li .play-button:hover {
+    background: #555;
+}
