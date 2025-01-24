@@ -126,6 +126,38 @@
             /* Align the description text to the left */
             display: none;
         }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            /* Adjust container for smaller screens */
+            .container {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            /* Adjust playlist width */
+            ul {
+                width: 100%;
+                height: auto;
+                overflow-y: visible;
+                margin-top: 20px;
+            }
+
+            /* Reduce iframe height for smaller screens */
+            iframe {
+                height: 250px;
+            }
+
+            /* Make the header font size smaller for mobile */
+            h1 {
+                font-size: 16px;
+            }
+
+            /* Adjust the description section */
+            .description {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 
@@ -235,9 +267,6 @@
             }
         });
     </script>
-
-
-
 </body>
 
 </html>
