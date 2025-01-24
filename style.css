@@ -19,7 +19,6 @@ body {
     width: 80%;
     max-width: 1200px;
     margin-top: 20px;
-    flex-wrap: wrap; /* Allows for wrapping on smaller screens */
 }
 
 /* Video player styling */
@@ -29,6 +28,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
+    /* Align left */
 }
 
 /* Description section styling */
@@ -37,11 +37,15 @@ body {
     padding: 15px;
     text-align: left;
     display: none;
+    /* Removed the background color and border to make it transparent */
     width: 80%;
     max-width: 1000px;
     margin-left: 0;
     font-size: 68px;
+    /* Adjust the size here */
     line-height: 1.5;
+    /* Optional: Improve readability */
+    /* Align with the video */
 }
 
 /* Video iframe */
@@ -101,58 +105,4 @@ li .play-button {
 
 li .play-button:hover {
     background: #555;
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-    /* Adjust the container layout for tablets */
-    .container {
-        flex-direction: column; /* Stack video player and playlist vertically */
-        width: 90%; /* Adjust width for better mobile display */
-    }
-
-    /* Video player and playlist width adjustment */
-    .video-container {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    ul {
-        width: 100%; /* Make playlist take full width */
-        height: auto; /* Allow playlist height to be dynamic */
-    }
-
-    iframe {
-        height: 350px; /* Reduce iframe height for mobile */
-    }
-
-    li {
-        font-size: 14px; /* Adjust font size for smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    /* Further adjustments for very small screens (phones in portrait mode) */
-    .container {
-        width: 100%;
-    }
-
-    .description {
-        font-size: 36px; /* Make description smaller on mobile */
-        line-height: 1.3;
-    }
-
-    iframe {
-        height: 250px; /* Further reduce iframe height */
-    }
-
-    li {
-        font-size: 12px; /* Adjust font size for phone */
-        padding: 8px; /* Reduce padding */
-    }
-
-    li .play-button {
-        padding: 2px 6px; /* Smaller play button */
-        font-size: 10px; /* Adjust font size of play button */
-    }
 }
